@@ -2,6 +2,7 @@
 
 import { Champion } from "@/types/Champion";
 import { ChampionDetail } from "@/types/ChampionDetail";
+import { Item } from "@/types/Item";
 
 export async function fetchVersion(): Promise<string> {
   try {
@@ -19,6 +20,7 @@ export async function fetchVersion(): Promise<string> {
   }
 }
 
+// TODO: 챔피언 ID가 유효하지 않을 경우 적절한 에러 메시지와 상태 코드를 반환
 export async function fetchChampionList(): Promise<Record<string, Champion>> {
   try {
     const latestVersion = await fetchVersion();
@@ -60,6 +62,25 @@ export async function fetchChampionDetail(
     const champion = await response.json();
 
     return champion.data;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
+
+export async function fetchItemList(): Promise<Record<string, Item>> {
+  try {
+    const latestVersion = await fetchVersion();
+
+    const itemResponse = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/item.json`
+    );
+
+    if (!itemResponse.ok) {
+      throw new Error("챔피언 데이터 fetch 실패");
+    }
+    const items = await itemResponse.json();
+
+    return items.data;
   } catch (error: any) {
     throw new Error(error.message);
   }

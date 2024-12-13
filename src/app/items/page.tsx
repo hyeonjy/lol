@@ -1,7 +1,12 @@
-export default function Page() {
+import ItemList from "@/components/ItemList";
+
+export default async function Page() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>items page</div>
+    <main className="container mx-auto mt-10">
+      <div>
+        <h1 className="text-2xl font-bold mb-4">챔피언 목록</h1>
+        <ItemList />
+      </div>
     </main>
   );
 }
