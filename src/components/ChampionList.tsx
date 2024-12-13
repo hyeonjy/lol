@@ -1,9 +1,10 @@
-import { getChampions } from "@/utils/serverApi";
+"use clinet ";
+import { fetchChampionList } from "@/utils/serverApi";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function ChampionList() {
-  const champions = await getChampions();
+  const champions = await fetchChampionList();
 
   return (
     <div className="grid grid-cols-4 gap-4">

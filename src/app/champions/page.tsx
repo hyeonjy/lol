@@ -1,4 +1,3 @@
-import { getChampions } from "@/utils/serverApi";
 import ChampionList from "@/components/ChampionList";
 
 export default async function Page() {

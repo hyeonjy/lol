@@ -1,11 +1,11 @@
-type Info = {
+interface Info {
   attack: number;
   defense: number;
   magic: number;
   difficulty: number;
-};
+}
 
-type Image = {
+export interface Image {
   full: string;
   sprite: string;
   group: string;
@@ -13,9 +13,9 @@ type Image = {
   y: number;
   w: number;
   h: number;
-};
+}
 
-type Stats = {
+interface Stats {
   hp: number;
   hpperlevel: number;
   mp: number;
@@ -36,18 +36,20 @@ type Stats = {
   attackdamageperlevel: number;
   attackspeedperlevel: number;
   attackspeed: number;
-};
+}
 
-export type Champion = {
+export interface Champion {
   version: string;
   id: string;
   key: string;
   name: string;
   title: string;
+  image: Image;
   blurb: string;
   info: Info;
-  image: Image;
   tags: string[];
-  partype: string;
+  // TODO: ChampionDetail에는 없는 값인데 넣어도 되는걸까?
+  parinterface?: string;
+
   stats: Stats;
-};
+}
