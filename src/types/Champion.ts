@@ -39,17 +39,15 @@ type Stats = {
 };
 
 export type Champion = {
-  [ChampionName: string]: {
-    version: string;
-    id: string;
-    key: string;
-    name: string;
-    title: string;
-    blurb: string;
-    info: Info;
-    image: Image;
-    tags: string[];
-    partype: string;
-    stats: Stats;
-  };
+  version: string;
+  id: string;
+  key: string;
+  name: string;
+  title: string;
+  blurb: string;
+  info: Info;
+  image: Image;
+  tags: string[];
+  partype: string;
+  stats: Stats;
 };

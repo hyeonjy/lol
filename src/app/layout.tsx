@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import Providers from "@/components/providers/RQProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -43,7 +44,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="py-[100px]" cz-shortcut-listen="true">
         <Nav />
-        {children}
+        <Providers>{children}</Providers>
         <Footer />
       </body>
     </html>
