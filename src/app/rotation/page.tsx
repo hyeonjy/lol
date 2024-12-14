@@ -26,6 +26,7 @@ export default function Page() {
         <h1 className="text-3xl font-bold mb-4">
           챔피언 로테이션 (이번주 무료로 플레이 할 수 있어요!)
         </h1>
+        {/* TODO: championList */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {rotationData.map((champion) => (
             <Link

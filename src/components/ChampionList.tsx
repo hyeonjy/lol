@@ -1,14 +1,15 @@
-"use clinet ";
-import { fetchChampionList } from "@/utils/serverApi";
+import { Champion } from "@/types/Champion";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function ChampionList() {
-  const champions = await fetchChampionList();
+interface ChampionListProps {
+  champions: Champion[];
+}
 
+export default async function ChampionList({ champions }: ChampionListProps) {
   return (
-    <div className="grid grid-cols-4 gap-4">
-      {Object.values(champions).map((champion) => (
+    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      {champions.map((champion) => (
         <Link
           className="border rounded p-4 hover:shadow-lg"
           href={`/champions/${champion.id}`}
@@ -21,7 +22,7 @@ export default async function ChampionList() {
             className="mx-auto"
             src={`https://ddragon.leagueoflegends.com/cdn/${champion.version}/img/champion/${champion.image.full}`}
           />
-          <h2 className="mt-2 text-xl font-semibold">{champion.name}</h2>
+          <h2 className="mt-2 text-xl font-semibold">{champion.id}</h2>
           <p className="text-gray-500">{champion.title}</p>
         </Link>
       ))}
