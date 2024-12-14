@@ -7,8 +7,8 @@ export default async function ItemList() {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-      {Object.values(items).map((item) => (
-        <div className="border rounded p-4 hover:shadow-lg">
+      {Object.entries(items).map(([itemId, item]) => (
+        <div className="border rounded p-4 hover:shadow-lg" key={itemId}>
           <Image
             alt={item.name}
             width={100}

@@ -1,6 +1,7 @@
 import { ChampionRotation } from "@/types/ChampionRotation";
 import { NextResponse } from "next/server";
 
+// TODO: 타입 지정
 export async function GET() {
   const URL = "https://kr.api.riotgames.com/lol/platform/v3/champion-rotations";
   const API_KEY = process.env.RIOT_API_KEY;
