@@ -1,3 +1,4 @@
+import { delay } from "@/utils/delay";
 import { fetchChampionDetail, fetchVersion } from "@/utils/serverApi";
 import Image from "next/image";
 
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }: ChampionDetailProps) {
 
 export default async function Page({ params }: ChampionDetailProps) {
   const { id } = params;
+  await delay(800);
   const data = await fetchChampionDetail(id);
   const latestVersion = await fetchVersion();
 

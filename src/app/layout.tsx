@@ -57,6 +57,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // TODO: 에러 핸들링
   // const randomNum = Math.random();
   // console.log("randomNum: ", randomNum);
   // if (randomNum < 0.1) throw new Error("루트에서 에러발생!");

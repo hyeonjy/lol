@@ -5,6 +5,8 @@ import { getChampionRotation } from "@/utils/riotAPi";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import Loading from "./loading";
+import { Suspense } from "react";
 
 export default function Page() {
   const {
@@ -17,7 +19,7 @@ export default function Page() {
     queryFn: getChampionRotation,
   });
 
-  if (isPending) return <div>Loading...</div>;
+  if (isPending) return <Loading />;
   if (isError) return <div>Error: {error}</div>;
 
   return (

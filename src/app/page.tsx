@@ -23,6 +23,8 @@ export default function Home() {
                 alt="main1"
                 width={400}
                 height={300}
+                style={{ width: 400, height: 300 }}
+                // priority={true}
               />
             </div>
             챔피언 목록 보기
@@ -39,6 +41,7 @@ export default function Home() {
                 alt="main2"
                 width={400}
                 height={300}
+                style={{ width: 400, height: 300 }}
               />
             </div>
             금주 로테이션 확인
@@ -55,6 +58,7 @@ export default function Home() {
                 alt="main3"
                 width={400}
                 height={300}
+                style={{ width: 400, height: 300 }}
               />
             </div>
             아이템 목록 보기

@@ -1,8 +1,10 @@
+import { delay } from "./delay";
 import { fetchChampionList } from "./serverApi";
 import { Champion } from "@/types/Champion";
 
 export const getChampionRotation = async (): Promise<Champion[]> => {
   try {
+    await delay(800);
     const rotationResponse = await fetch("/api/rotation");
 
     if (!rotationResponse.ok) {
