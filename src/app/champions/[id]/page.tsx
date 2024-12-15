@@ -2,11 +2,39 @@ import { fetchChampionDetail, fetchVersion } from "@/utils/serverApi";
 import Image from "next/image";
 
 type ChampionDetailProps = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
+export async function generateMetadata({ params }: ChampionDetailProps) {
+  const { id } = params;
+  const data = await fetchChampionDetail(id);
+  const latestVersion = await fetchVersion();
+  const champion = Object.values(data)[0];
+
+  return {
+    title: `${champion.name} - My Riot App`,
+    description: champion.lore,
+    openGraph: {
+      title: `${champion.name} - My Riot App`,
+      description: champion.lore,
+      url: `http://localhost:3000/champions/${champion.name}`,
+      siteName: "lol",
+      images: [
+        {
+          url: `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/img/champion/${champion.image.full}`,
+          width: 800,
+          height: 600,
+          alt: "Og Image Alt",
+        },
+      ],
+      locale: "ko_KR",
+      type: "website",
+    },
+  };
+}
+
 export default async function Page({ params }: ChampionDetailProps) {
-  const { id } = await params;
+  const { id } = params;
   const data = await fetchChampionDetail(id);
   const latestVersion = await fetchVersion();
 
