@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "리그 오브 레전드 정보 앱",
     description: "여기를 눌러 링크를 확인하세요",
-    url: "https://my-website.com",
+    url: "http://localhost:3000",
     siteName: "lol",
     images: [
       {
@@ -57,6 +57,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const randomNum = Math.random();
+  // console.log("randomNum: ", randomNum);
+  // if (randomNum < 0.1) throw new Error("루트에서 에러발생!");
+
   return (
     <html lang="en">
       <body className="py-[100px]" cz-shortcut-listen="true">

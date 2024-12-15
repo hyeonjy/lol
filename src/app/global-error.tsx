@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { startTransition, useEffect } from "react";
+import { startTransition } from "react";
 
-export default function Error({
+export default function GlobalError({
   error,
   reset,
 }: {

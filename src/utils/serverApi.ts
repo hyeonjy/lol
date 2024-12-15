@@ -77,7 +77,7 @@ export async function fetchItemList(): Promise<Record<string, Item>> {
     );
 
     if (!itemResponse.ok) {
-      throw new Error("챔피언 데이터 fetch 실패");
+      throw new Error("아이템 데이터 fetch 실패");
     }
     const items = await itemResponse.json();
 
