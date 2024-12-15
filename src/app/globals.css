@@ -3,30 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
+  --foreground-rgb: 255, 255, 255; /* 다크모드일때 화이트 text*/
+  --background-rgb: 0, 0, 0; /* 다크모드 일때 배경색 */
   --primary-color: 255, 85, 85;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.light {
+  --foreground-rgb: 0, 0, 0; /* 라이트 모드일때 검정 text */
+  --background-rgb: 255, 255, 255; /* 화이트모드 일때 배경색 */
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
 }
 
 body {
-  color: rgb(var(--background-start-rgb));
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
-  background-color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-rgb));
+  color: rgb(var(--foreground-rgb));
+  transition: background-color 0.3s, color 0.3s;
 }
 
 h1,
@@ -35,11 +29,17 @@ h2 {
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
   .text-primary {
     color: rgb(var(--primary-color));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
