@@ -52,7 +52,8 @@ export async function fetchChampionDetail(
     const latestVersion = await fetchVersion();
 
     const response = await fetch(
-      `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion/${id}.json`
+      `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion/${id}.json`,
+      { cache: "no-store" }
     );
 
     if (!response.ok) {
