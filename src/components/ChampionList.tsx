@@ -6,7 +6,7 @@ interface ChampionListProps {
   champions: Champion[];
 }
 
-export default async function ChampionList({ champions }: ChampionListProps) {
+export default function ChampionList({ champions }: ChampionListProps) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
       {champions.map((champion) => (

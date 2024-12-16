@@ -13,19 +13,21 @@ export default function GlobalError({
   const { refresh } = useRouter();
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <h2>{error.message}</h2>
-      <button
-        onClick={() =>
-          startTransition(() => {
-            refresh();
-            reset();
-          })
-        }
-      >
-        Try again
-      </button>
-    </div>
+    <html>
+      <body>
+        <h2>Something went wrong!</h2>
+        <h2>{error.message}</h2>
+        <button
+          onClick={() =>
+            startTransition(() => {
+              refresh();
+              reset();
+            })
+          }
+        >
+          Try again
+        </button>
+      </body>
+    </html>
   );
 }
