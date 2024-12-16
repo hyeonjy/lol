@@ -50,6 +50,7 @@ export async function fetchChampionDetail(
 ): Promise<Record<string, ChampionDetail>> {
   try {
     const latestVersion = await fetchVersion();
+    console.log("API 호출 시간:", new Date().toISOString());
 
     const response = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion/${id}.json`,
