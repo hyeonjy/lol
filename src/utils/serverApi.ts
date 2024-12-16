@@ -16,11 +16,12 @@ export async function fetchVersion(): Promise<string> {
     const latestVersion = versions[0];
     return latestVersion;
   } catch (error: any) {
+    // if (error instanceof Error) {
     throw new Error(error.message);
+    // }
   }
 }
 
-// TODO: 챔피언 ID가 유효하지 않을 경우 적절한 에러 메시지와 상태 코드를 반환
 export async function fetchChampionList(): Promise<Record<string, Champion>> {
   try {
     const latestVersion = await fetchVersion();

@@ -48,8 +48,6 @@ export interface Champion {
   blurb: string;
   info: Info;
   tags: string[];
-  // TODO: ChampionDetail에는 없는 값인데 넣어도 되는걸까?
-  parinterface?: string;
-
+  parinterface: string;
   stats: Stats;
 }

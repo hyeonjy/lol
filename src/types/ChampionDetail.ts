@@ -19,11 +19,10 @@ interface Spell {
   cost: number[];
   costBurn: string;
 
-  // TODO: 빈 객체만 반환하면 타입은?
-  datavalues: {};
+  datavalues: { [key: string]: unknown };
   effect: (null | number[])[];
   effectBurn: (null | string)[];
-  vars: [];
+  vars: any[];
   costType: string;
   maxammo: string;
   range: number[];
@@ -38,7 +37,7 @@ interface Passive {
   image: Image;
 }
 
-export interface ChampionDetail extends Champion {
+export interface ChampionDetail extends Omit<Champion, "parinterface"> {
   skins: Skins[];
   lore: string;
   allytips: string[];

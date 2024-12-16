@@ -12,13 +12,13 @@ export default function Page() {
     isPending,
     isError,
     error,
-  } = useQuery<Champion[], any>({
+  } = useQuery<Champion[], Error, Champion[], [string]>({
     queryKey: ["rotation"],
     queryFn: getChampionRotation,
   });
 
   if (isPending) return <Loading />;
-  if (isError) return <div>Error: {error}</div>;
+  if (isError) return <div>Error: {error.message}</div>;
 
   return (
     <main className="container mx-auto mt-10">
