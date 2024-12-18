@@ -5,6 +5,7 @@ import { ChampionDetail } from "@/types/ChampionDetail";
 import { Item } from "@/types/Item";
 import { notFound } from "next/navigation";
 
+// 최신 버전을 가져오는 함수
 export async function fetchVersion(): Promise<string> {
   try {
     const versionResponse = await fetch(
@@ -21,9 +22,10 @@ export async function fetchVersion(): Promise<string> {
   }
 }
 
+// 챔피언 리스트를 가져오는 함수
 export async function fetchChampionList(): Promise<Record<string, Champion>> {
   try {
-    const latestVersion = await fetchVersion();
+    const latestVersion = await fetchVersion(); // 최신 버전을 가져옴
 
     const championResponse = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion.json`,
@@ -45,17 +47,18 @@ export async function fetchChampionList(): Promise<Record<string, Champion>> {
   }
 }
 
+// 특정 챔피언의 상세 정보를 가져오는 함수
 export async function fetchChampionDetail(
   id: string
 ): Promise<Record<string, ChampionDetail>> {
   const latestVersion = await fetchVersion();
-  console.log("API 호출 시간:", new Date().toISOString());
 
   const response = await fetch(
     `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion/${id}.json`,
     { cache: "no-store" }
   );
 
+  // 403 상태 코드일 경우 notFound() 호출
   if (response.status === 403) {
     notFound();
   }
@@ -65,6 +68,7 @@ export async function fetchChampionDetail(
   return champion.data;
 }
 
+// 아이템 리스트를 가져오는 함수
 export async function fetchItemList(): Promise<Record<string, Item>> {
   try {
     const latestVersion = await fetchVersion();

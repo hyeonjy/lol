@@ -3,7 +3,7 @@ import { delay } from "@/utils/delay";
 import { fetchChampionList } from "@/utils/serverApi";
 
 export default async function Page() {
-  await delay(600);
+  await delay(600); // 600ms 지연 시간을 추가 (예: 로딩 효과를 위해)
   const champions = await fetchChampionList();
   const championArray = Object.values(champions);
 

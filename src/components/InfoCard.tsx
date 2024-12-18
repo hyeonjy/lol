@@ -11,6 +11,7 @@ interface InfoCardProps {
 export default function InfoCard({ href, src, alt, title }: InfoCardProps) {
   return (
     <div className="flex flex-col justify-center gap-10">
+      {/* 클릭 시 지정된 링크로 이동하는 Link 컴포넌트 */}
       <Link
         className="flex flex-col justify-center items-center gap-5 text-amber-400"
         href={href}

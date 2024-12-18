@@ -1,6 +1,7 @@
 import InfoCard from "@/components/InfoCard";
 
 export default function Home() {
+  // 홈 페이지에서 사용할 카드 정보 배열
   const infoCards = [
     {
       href: "/champions",

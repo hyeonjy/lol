@@ -6,6 +6,7 @@ type ChampionDetailProps = {
   params: { id: string };
 };
 
+// 챔피언 상세 페이지의 메타데이터를 생성하는 함수
 export async function generateMetadata({ params }: ChampionDetailProps) {
   const { id } = params;
   const data = await fetchChampionDetail(id);
@@ -34,15 +35,15 @@ export async function generateMetadata({ params }: ChampionDetailProps) {
   };
 }
 
+// 챔피언 상세 페이지 컴포넌트
 export default async function Page({ params }: ChampionDetailProps) {
-  const { id } = params;
-  await delay(600);
-  const data = await fetchChampionDetail(id);
-
-  const latestVersion = await fetchVersion();
-
+  const { id } = params; // URL 파라미터에서 챔피언 ID 추출
+  await delay(600); // 600ms 지연 시간을 추가 (예: 로딩 효과를 위해)
+  const data = await fetchChampionDetail(id); // 챔피언 상세 정보 API 호출
+  const latestVersion = await fetchVersion(); // 최신 버전 정보 API 호출
   const champion = Object.values(data)[0];
 
+  // stat의 한글 번역
   const statTranslations: { [key: string]: string } = {
     attack: "공격력",
     defense: "방어력",
@@ -53,8 +54,11 @@ export default async function Page({ params }: ChampionDetailProps) {
   return (
     <main className="container mx-auto mt-10">
       <div className="max-w-3xl mx-auto">
+        {/* 챔피언 이름과 제목 */}
         <h1 className="text-4xl font-bold mb-4">{champion.name}</h1>
         <h2 className="text-2xl text-gray-600 mb-4">{champion.title}</h2>
+
+        {/* 챔피언 이미지 */}
         <Image
           alt={champion.name}
           width={250}
@@ -63,8 +67,10 @@ export default async function Page({ params }: ChampionDetailProps) {
           className="mx-auto"
         />
 
+        {/* 챔피언 배경 이야기 */}
         <p className="mt-4 text-primary">{champion.lore}</p>
 
+        {/* 챔피언 스탯 */}
         <div className="mt-6">
           <h3 className="text-xl font-semibold text-primary">스탯</h3>
           <ul className="list-disc list-inside">
