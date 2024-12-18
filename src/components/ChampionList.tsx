@@ -14,6 +14,7 @@ export default function ChampionList({ champions }: ChampionListProps) {
           className="border rounded p-4 hover:shadow-lg"
           href={`/champions/${champion.id}`}
           key={champion.id}
+          scroll={false}
         >
           <Image
             alt={champion.id}

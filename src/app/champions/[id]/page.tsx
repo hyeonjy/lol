@@ -36,8 +36,9 @@ export async function generateMetadata({ params }: ChampionDetailProps) {
 
 export default async function Page({ params }: ChampionDetailProps) {
   const { id } = params;
-  await delay(800);
+  await delay(600);
   const data = await fetchChampionDetail(id);
+
   const latestVersion = await fetchVersion();
 
   const champion = Object.values(data)[0];

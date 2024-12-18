@@ -3,7 +3,7 @@ import { delay } from "@/utils/delay";
 import { fetchChampionList } from "@/utils/serverApi";
 
 export default async function Page() {
-  await delay(800);
+  await delay(600);
   const champions = await fetchChampionList();
   const championArray = Object.values(champions);
 

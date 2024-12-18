@@ -3,6 +3,7 @@
 import { Champion } from "@/types/Champion";
 import { ChampionDetail } from "@/types/ChampionDetail";
 import { Item } from "@/types/Item";
+import { notFound } from "next/navigation";
 
 export async function fetchVersion(): Promise<string> {
   try {
@@ -47,25 +48,21 @@ export async function fetchChampionList(): Promise<Record<string, Champion>> {
 export async function fetchChampionDetail(
   id: string
 ): Promise<Record<string, ChampionDetail>> {
-  try {
-    const latestVersion = await fetchVersion();
-    console.log("API 호출 시간:", new Date().toISOString());
+  const latestVersion = await fetchVersion();
+  console.log("API 호출 시간:", new Date().toISOString());
 
-    const response = await fetch(
-      `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion/${id}.json`,
-      { cache: "no-store" }
-    );
+  const response = await fetch(
+    `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion/${id}.json`,
+    { cache: "no-store" }
+  );
 
-    if (!response.ok) {
-      throw new Error("챔피언 상세 fetch 실패");
-    }
-
-    const champion = await response.json();
-
-    return champion.data;
-  } catch (error: any) {
-    throw new Error(error.message);
+  if (response.status === 403) {
+    notFound();
   }
+
+  const champion = await response.json();
+
+  return champion.data;
 }
 
 export async function fetchItemList(): Promise<Record<string, Item>> {

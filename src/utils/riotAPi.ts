@@ -4,7 +4,7 @@ import { Champion } from "@/types/Champion";
 
 export async function getChampionRotation(): Promise<Champion[]> {
   try {
-    await delay(800);
+    await delay(600);
     const rotationResponse = await fetch("/api/rotation");
 
     if (!rotationResponse.ok) {
