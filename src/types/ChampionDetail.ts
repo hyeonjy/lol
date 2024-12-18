@@ -18,11 +18,9 @@ interface Spell {
   cooldownBurn: string;
   cost: number[];
   costBurn: string;
-
   datavalues: { [key: string]: unknown };
   effect: (null | number[])[];
   effectBurn: (null | string)[];
-  vars: any[];
   costType: string;
   maxammo: string;
   range: number[];
@@ -45,5 +43,4 @@ export interface ChampionDetail extends Omit<Champion, "parinterface"> {
   partype: string;
   spells: Spell[];
   passive: Passive;
-  recommended: [];
 }

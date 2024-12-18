@@ -2,7 +2,7 @@ import { delay } from "./delay";
 import { fetchChampionList } from "./serverApi";
 import { Champion } from "@/types/Champion";
 
-export const getChampionRotation = async (): Promise<Champion[]> => {
+export async function getChampionRotation(): Promise<Champion[]> {
   try {
     await delay(800);
     const rotationResponse = await fetch("/api/rotation");
@@ -27,4 +27,4 @@ export const getChampionRotation = async (): Promise<Champion[]> => {
   } catch (err) {
     throw new Error("데이터 fetch 실패");
   }
-};
+}

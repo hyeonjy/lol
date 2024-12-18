@@ -1,8 +1,27 @@
-import Image from "next/image";
-import Link from "next/link";
-import Main1 from "/assets/main1.png";
+import InfoCard from "@/components/InfoCard";
 
 export default function Home() {
+  const infoCards = [
+    {
+      href: "/champions",
+      src: "/assets/main1.png",
+      alt: "main1",
+      title: "챔피언 목록 보기",
+    },
+    {
+      href: "/rotation",
+      src: "/assets/main2.png",
+      alt: "main2",
+      title: "금주 로테이션 확인",
+    },
+    {
+      href: "/items",
+      src: "/assets/main3.png",
+      alt: "main3",
+      title: "아이템 목록 보기",
+    },
+  ];
+
   return (
     <main className="container mx-auto mt-10">
       <div className="text-center">
@@ -12,58 +31,15 @@ export default function Home() {
         </p>
       </div>
       <div className="mt-[40px] flex flex-col justify-center gap-10">
-        <div className="flex flex-col justify-center gap-10">
-          <Link
-            className="flex flex-col justify-center items-center gap-5 text-amber-400"
-            href={"/champions"}
-          >
-            <div className="relative w-[400px] h-[300px]">
-              <Image
-                src="/assets/main1.png"
-                alt="main1"
-                width={400}
-                height={300}
-                style={{ width: 400, height: 300 }}
-                // priority={true}
-              />
-            </div>
-            챔피언 목록 보기
-          </Link>
-        </div>
-        <div className="flex flex-col justify-center gap-10">
-          <Link
-            className="flex flex-col justify-center items-center gap-5 text-amber-400"
-            href={"/rotation"}
-          >
-            <div className="relative w-[400px] h-[300px]">
-              <Image
-                src="/assets/main2.png"
-                alt="main2"
-                width={400}
-                height={300}
-                style={{ width: 400, height: 300 }}
-              />
-            </div>
-            금주 로테이션 확인
-          </Link>
-        </div>
-        <div className="flex flex-col justify-center gap-10">
-          <Link
-            className="flex flex-col justify-center items-center gap-5 text-amber-400"
-            href={"/items"}
-          >
-            <div className="relative w-[400px] h-[300px]">
-              <Image
-                src="/assets/main3.png"
-                alt="main3"
-                width={400}
-                height={300}
-                style={{ width: 400, height: 300 }}
-              />
-            </div>
-            아이템 목록 보기
-          </Link>
-        </div>
+        {infoCards.map((card) => (
+          <InfoCard
+            key={card.href}
+            href={card.href}
+            src={card.src}
+            alt={card.alt}
+            title={card.title}
+          />
+        ))}
       </div>
     </main>
   );

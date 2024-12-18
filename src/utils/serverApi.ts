@@ -16,9 +16,7 @@ export async function fetchVersion(): Promise<string> {
     const latestVersion = versions[0];
     return latestVersion;
   } catch (error: any) {
-    // if (error instanceof Error) {
     throw new Error(error.message);
-    // }
   }
 }
 
