@@ -1,4 +1,4 @@
-import ChampionList from "@/components/ChampionList";
+import ChampionList from "@/components/champion/ChampionList";
 import { delay } from "@/utils/delay";
 import { fetchChampionList } from "@/utils/serverApi";
 

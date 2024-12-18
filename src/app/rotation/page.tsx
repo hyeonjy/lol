@@ -1,6 +1,6 @@
 "use client";
 
-import ChampionList from "@/components/ChampionList";
+import ChampionList from "@/components/champion/ChampionList";
 import Loading from "@/components/Loading";
 import { Champion } from "@/types/Champion";
 import { getChampionRotation } from "@/utils/riotAPi";

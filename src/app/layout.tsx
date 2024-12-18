@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "@/components/providers/RQProvider";
 import { ThemeProvider } from "../components/providers/ThemeProvider";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "리그 오브 레전드 정보 앱",
